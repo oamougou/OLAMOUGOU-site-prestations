@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Conseil et ingénierie en données, intelligence artificielle et contrôle des processus. Audit de flux, fiabilisation de la facturation et tableaux de bord décisionnels. Douala, Cameroun.">
+<meta name="author" content="AMOUGOU Olivier">
+<link rel="canonical" href="https://VOTRE-DOMAINE.com/">
+
+<!-- Partage social (Open Graph / LinkedIn / WhatsApp / Facebook) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AMOUGOU Olivier — Prestations intellectuelles">
+<meta property="og:title" content="Prestations intellectuelles en données, IA et contrôle des processus">
+<meta property="og:description" content="Audit de flux, fiabilisation de la facturation, ingénierie décisionnelle et solutions IA pour organisations à forte intensité transactionnelle.">
+<meta property="og:url" content="https://VOTRE-DOMAINE.com/">
+<meta property="og:image" content="https://VOTRE-DOMAINE.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+
+<!-- Partage X / Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prestations intellectuelles en données, IA et contrôle des processus">
+<meta name="twitter:description" content="Audit de flux, fiabilisation de la facturation et ingénierie décisionnelle. Douala, Cameroun.">
+<meta name="twitter:image" content="https://VOTRE-DOMAINE.com/og-image.png">
+
+<!-- Favicon autonome -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230d1b2a'/%3E%3Crect x='7' y='7' width='18' height='18' fill='none' stroke='%234fb3d0' stroke-width='2'/%3E%3Crect x='17' y='11' width='5' height='5' fill='%234fb3d0'/%3E%3C/svg%3E">
+
+<title>AMOUGOU Olivier — Prestations intellectuelles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --bg-alt:#f4f6f9;
+  --bg-deep:#0d1b2a;
+  --ink:#10192a;
+  --ink-soft:#4a5568;
+  --line:#dde3ec;
+  --accent:#0f6f8c;
+  --accent-soft:#e3f0f4;
+  --on-deep:#e8eef5;
+  --on-deep-soft:#9fb0c4;
+  --radius:4px;
+  --maxw:1120px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d1b2a; --bg-alt:#132436; --bg-deep:#091420;
+    --ink:#e8eef5; --ink-soft:#a3b3c6; --line:#233448;
+    --accent:#4fb3d0; --accent-soft:#122c38;
+    --on-deep:#e8eef5; --on-deep-soft:#9fb0c4;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d1b2a; --bg-alt:#132436; --bg-deep:#091420;
+  --ink:#e8eef5; --ink-soft:#a3b3c6; --line:#233448;
+  --accent:#4fb3d0; --accent-soft:#122c38;
+  --on-deep:#e8eef5; --on-deep-soft:#9fb0c4;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+a{color:inherit}
+h1,h2,h3{line-height:1.2;margin:0;letter-spacing:-0.02em;font-weight:600}
+
+/* Header */
+header{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:50;
+  background:color-mix(in srgb,var(--bg) 92%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+}
+.navbar{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:-0.01em;text-decoration:none}
+.mark{width:26px;height:26px;border:1.5px solid var(--accent);border-radius:2px;position:relative;flex:0 0 auto}
+.mark::after{content:"";position:absolute;inset:6px 6px auto auto;width:8px;height:8px;background:var(--accent)}
+.brand small{display:block;font-size:11px;font-weight:400;color:var(--ink-soft);letter-spacing:0.06em;text-transform:uppercase}
+nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:14px}
+nav a{text-decoration:none;color:var(--ink-soft);padding:4px 0;border-bottom:1px solid transparent}
+nav a:hover{color:var(--ink);border-color:var(--accent)}
+.nav-cta{
+  display:inline-block;padding:9px 18px;background:var(--accent);color:#fff;
+  text-decoration:none;font-size:14px;font-weight:500;border-radius:var(--radius);white-space:nowrap;
+}
+.nav-cta:hover{filter:brightness(1.08)}
+@media (max-width:860px){nav{display:none}}
+
+/* Hero */
+.hero{background:var(--bg-deep);color:var(--on-deep);padding:88px 0 72px;position:relative;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:0;opacity:.35;
+  background-image:linear-gradient(var(--on-deep-soft) 1px,transparent 1px),linear-gradient(90deg,var(--on-deep-soft) 1px,transparent 1px);
+  background-size:64px 64px;mask-image:radial-gradient(circle at 80% 15%,#000,transparent 65%);opacity:.08;
+}
+.hero .wrap{position:relative}
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 18px
+}
+.hero h1{font-size:clamp(30px,5vw,50px);max-width:19ch}
+.hero p.lead{max-width:60ch;color:var(--on-deep-soft);font-size:clamp(16px,2vw,18px);margin:22px 0 0}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{display:inline-block;padding:12px 24px;border-radius:var(--radius);text-decoration:none;font-size:15px;font-weight:500}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{filter:brightness(1.08)}
+.btn-ghost{border:1px solid rgba(159,176,196,.4);color:var(--on-deep)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:56px;padding-top:28px;border-top:1px solid rgba(159,176,196,.2)}
+.stat b{display:block;font-size:26px;font-weight:600;font-family:"IBM Plex Mono",monospace}
+.stat span{font-size:13px;color:var(--on-deep-soft)}
+
+/* Sections */
+section{padding:76px 0;border-bottom:1px solid var(--line)}
+.alt{background:var(--bg-alt)}
+.sec-head{max-width:66ch;margin-bottom:44px}
+.sec-head .eyebrow{color:var(--accent)}
+.sec-head h2{font-size:clamp(22px,3.4vw,32px)}
+.sec-head p{color:var(--ink-soft);margin:14px 0 0}
+
+/* Services */
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(288px,1fr))}
+.card{
+  background:var(--bg);border:1px solid var(--line);border-top:2px solid var(--accent);
+  border-radius:var(--radius);padding:26px 24px 24px;display:flex;flex-direction:column;
+}
+.card .num{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);letter-spacing:.1em}
+.card h3{font-size:18px;margin:10px 0 10px}
+.card p{margin:0;color:var(--ink-soft);font-size:15px}
+.card ul{margin:16px 0 0;padding-left:18px;color:var(--ink-soft);font-size:14px}
+.card li{margin-bottom:5px}
+
+/* Compétences */
+.skill-cols{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+.skill-block h3{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);padding-bottom:10px;border-bottom:1px solid var(--line)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tag{
+  font-family:"IBM Plex Mono",monospace;font-size:12.5px;padding:5px 10px;
+  background:var(--accent-soft);color:var(--accent);border-radius:2px;
+}
+/* Méthode */
+.steps{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--bg)}
+.step{padding:26px 24px;border-right:1px solid var(--line)}
+.step:last-child{border-right:none}
+.step b{font-family:"IBM Plex Mono",monospace;color:var(--accent);font-size:12px;letter-spacing:.1em}
+.step h3{font-size:16px;margin:8px 0 8px}
+.step p{margin:0;font-size:14px;color:var(--ink-soft)}
+@media (max-width:760px){.step{border-right:none;border-bottom:1px solid var(--line)}.step:last-child{border-bottom:none}}
+
+/* Profil */
+.split{display:grid;gap:44px;grid-template-columns:1.25fr 1fr;align-items:start}
+@media (max-width:880px){.split{grid-template-columns:1fr;gap:32px}}
+.split p{color:var(--ink-soft)}
+.facts{border:1px solid var(--line);border-radius:var(--radius);background:var(--bg);padding:4px 22px}
+.facts dl{margin:0}
+.facts div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:14px}
+.facts div:last-child{border-bottom:none}
+.facts dt{color:var(--ink-soft);margin:0}
+.facts dd{margin:0;text-align:right;font-weight:500}
+
+/* Étude de cas — Bento */
+.case{background:var(--bg-deep);color:var(--on-deep);border-bottom:1px solid var(--line)}
+.case .sec-head h2{color:var(--on-deep)}
+.case .sec-head p{color:var(--on-deep-soft)}
+.bento{display:grid;gap:16px;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(180px,auto)}
+@media (max-width:980px){.bento{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.bento{grid-template-columns:1fr}}
+.b-card{
+  border:1px solid rgba(159,176,196,.22);border-radius:14px;background:rgba(255,255,255,.028);
+  padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;
+  transition:border-color .2s ease;
+}
+.b-card:hover{border-color:rgba(159,176,196,.42)}
+.b-wide{grid-column:span 2}
+@media (max-width:620px){.b-wide{grid-column:span 1}}
+.b-label{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-deep-soft)}
+.b-card h3{font-size:19px;color:var(--on-deep);margin:10px 0 10px;font-weight:500}
+.b-card h4{font-size:16px;color:var(--on-deep);margin:8px 0 10px;font-weight:500}
+.b-card p{margin:0;font-size:14px;color:var(--on-deep-soft);line-height:1.6}
+.b-pill{
+  display:inline-block;padding:5px 11px;border-radius:6px;font-size:12px;font-weight:500;margin-bottom:16px;
+  background:rgba(217,164,65,.12);color:#d9a441;border:1px solid rgba(217,164,65,.25);
+}
+.b-foot{
+  margin-top:22px;padding-top:14px;border-top:1px solid rgba(159,176,196,.16);
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:12px;color:var(--on-deep-soft);
+}
+.b-num{font-size:44px;font-weight:600;letter-spacing:-.03em;color:var(--on-deep);line-height:1.05}
+.b-num em{font-style:normal;color:var(--accent)}
+.b-num .u{font-size:18px;font-weight:400;color:var(--on-deep-soft);margin-left:4px}
+.b-bar{height:4px;width:100%;background:rgba(159,176,196,.18);border-radius:999px;overflow:hidden;margin-top:18px}
+.b-bar i{display:block;height:100%;width:100%;background:var(--accent);border-radius:999px}
+.b-live{display:flex;align-items:center;gap:7px;margin-top:18px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:#3fae7f}
+.b-stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
+.b-stack span{padding:4px 9px;border-radius:4px;background:rgba(159,176,196,.12);font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--on-deep)}
+.b-steps{display:grid;gap:10px;grid-template-columns:repeat(3,1fr);margin-top:6px}
+@media (max-width:700px){.b-steps{grid-template-columns:1fr}}
+.b-steps div{padding:14px;border-radius:9px;background:rgba(0,0,0,.2);border:1px solid rgba(159,176,196,.14)}
+.b-steps b{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);font-weight:600}
+.b-steps p{font-size:12.5px;margin-top:5px}
+.b-icon{
+  width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  background:rgba(79,179,208,.12);border:1px solid rgba(79,179,208,.25);color:var(--accent);margin-bottom:14px;
+}
+.b-roi{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(79,179,208,.08))}
+.b-roi .b-foot{display:block}
+.b-roi .b-foot strong{color:var(--on-deep);font-size:12px;font-weight:500;display:block}
+.b-roi .b-foot em{font-style:normal;font-family:"IBM Plex Mono",monospace;color:var(--accent);font-size:12px;display:block;margin-top:3px}
+
+/* Vision */
+.quote{
+  border-left:3px solid var(--accent);padding:4px 0 4px 24px;margin:32px 0 0;
+  font-size:17px;line-height:1.6;color:var(--ink);max-width:70ch;
+}
+.quote b{color:var(--accent);font-weight:600}
+.kpi-row{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:44px}
+.kpi{border:1px solid var(--line);border-top:2px solid var(--accent);border-radius:var(--radius);background:var(--bg);padding:24px}
+.kpi b{display:block;font-size:22px;font-weight:600;letter-spacing:-.02em;margin-bottom:8px}
+.kpi p{margin:0;font-size:14px;color:var(--ink-soft)}
+.culture{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin:26px 0 0}
+.culture div{border:1px solid var(--line);border-radius:var(--radius);background:var(--bg);padding:22px}
+.culture b{display:block;font-size:12px;font-family:"IBM Plex Mono",monospace;color:var(--accent);letter-spacing:.1em;margin-bottom:8px}
+.culture h4{margin:0 0 8px;font-size:16px;font-weight:600}
+.culture p{margin:0;font-size:14px;color:var(--ink-soft)}
+.principes{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:14px}
+.principes li{padding-left:24px;position:relative;font-size:15px;color:var(--ink-soft)}
+.principes li::before{content:"";position:absolute;left:0;top:9px;width:9px;height:9px;background:var(--accent);border-radius:1px}
+.principes strong{color:var(--ink);font-weight:600}
+
+/* Formulaire de contact */
+.form-wrap{margin-top:44px;border-top:1px solid rgba(159,176,196,.2);padding-top:36px}
+.form-wrap h3{font-size:17px;color:var(--on-deep);font-weight:500;margin-bottom:6px}
+.form-wrap .hint{font-size:13px;color:var(--on-deep-soft);margin:0 0 24px}
+form{display:grid;gap:16px;grid-template-columns:1fr 1fr;max-width:760px}
+@media (max-width:640px){form{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full{grid-column:1 / -1}
+label{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--on-deep-soft)}
+input,select,textarea{
+  font-family:inherit;font-size:15px;color:var(--on-deep);background:rgba(255,255,255,.04);
+  border:1px solid rgba(159,176,196,.28);border-radius:var(--radius);padding:11px 13px;width:100%;
+}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);background:rgba(255,255,255,.07)}
+textarea{resize:vertical;min-height:120px}
+select option{background:#0d1b2a;color:#e8eef5}
+button[type=submit]{
+  justify-self:start;grid-column:1 / -1;border:none;cursor:pointer;
+  background:var(--accent);color:#fff;font-family:inherit;font-size:15px;font-weight:500;
+  padding:12px 28px;border-radius:var(--radius);
+}
+button[type=submit]:hover{filter:brightness(1.08)}
+.rgpd{grid-column:1 / -1;font-size:12px;color:var(--on-deep-soft);margin:0}
+
+/* Contact */
+.contact{background:var(--bg-deep);color:var(--on-deep);border-bottom:none}
+.contact h2{font-size:clamp(22px,3.4vw,32px)}
+.contact p{color:var(--on-deep-soft);max-width:58ch}
+.contact-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:40px}
+.contact-item{border:1px solid rgba(159,176,196,.25);border-radius:var(--radius);padding:22px}
+.contact-item span{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.contact-item a{color:var(--on-deep);text-decoration:none;font-size:15px;word-break:break-word}
+.contact-item a:hover{color:var(--accent)}
+footer{background:var(--bg-deep);color:var(--on-deep-soft);font-size:13px;padding:26px 0;border-top:1px solid rgba(159,176,196,.18)}
+.foot{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap navbar">
+    <a class="brand" href="#top">
+      <span class="mark" aria-hidden="true"></span>
+      <span>AMOUGOU Olivier<small>Prestations intellectuelles</small></span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#vision">Vision</a></li>
+        <li><a href="#services">Offres</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#etude-de-cas">Étude de cas</a></li>
+        <li><a href="#apropos">À propos</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/237676774643?text=Bonjour%2C%20je%20souhaite%20%C3%A9changer%20sur%20un%20projet." target="_blank" rel="noopener">Échanger sur WhatsApp</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Conseil &amp; expertise — Douala, Cameroun</p>
+    <h1>Prestations intellectuelles en données, IA et contrôle des processus</h1>
+    <p class="lead">Nous accompagnons les organisations publiques et privées sur la fiabilisation de leurs données, l'automatisation de leurs contrôles et la structuration de leurs dossiers techniques. Des livrables exploitables, pas des rapports d'intention.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://wa.me/237676774643?text=Bonjour%2C%20je%20souhaite%20%C3%A9changer%20sur%20un%20projet." target="_blank" rel="noopener">Discuter sur WhatsApp</a>
+      <a class="btn btn-ghost" href="#services">Voir les offres</a>
+      <a class="btn btn-ghost" href="#contact">Autres moyens de contact</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>10 ans</b><span>d'expérience professionnelle</span></div>
+      <div class="stat"><b>6</b><span>domaines d'intervention</span></div>
+      <div class="stat"><b>FR / EN</b><span>langues de travail</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="vision">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">01 — Positionnement stratégique</p>
+      <h2>Transformer la complexité informationnelle en levier de souveraineté et de rentabilité</h2>
+      <p>Dans un environnement où les flux d'activité et les volumes de données s'intensifient, l'enjeu pour une direction générale n'est plus seulement de numériser ses opérations, mais de sécuriser chaque point de contact opérationnel et financier.</p>
+    </div>
+    <p style="max-width:70ch;color:var(--ink-soft);margin:0">Trop d'organisations subissent une déperdition silencieuse de revenus, des ruptures de traçabilité et des temps de latence critiques entre le terrain et la décision.</p>
+    <p class="quote"><b>Notre conviction :</b> la technologie n'a de valeur que si elle protège les marges, réduit les zones d'opacité et accélère le temps de réaction managérial. L'intelligence artificielle et l'ingénierie décisionnelle ne doivent pas être des expérimentations isolées, mais des instruments pragmatiques de contrôle, de prévision et d'arbitrage.</p>
+
+    <div class="kpi-row">
+      <div class="kpi"><b>100 % auditabilité</b><p>Des flux entièrement réconciliés et documentés pour les instances de gouvernance.</p></div>
+      <div class="kpi"><b>Zéro rupture</b><p>Continuité opérationnelle entre les systèmes historiques et les nouvelles couches analytiques.</p></div>
+      <div class="kpi"><b>Décision éclairée</b><p>Synthèses exécutives et tableaux de bord conçus pour l'arbitrage rapide au niveau Comex / DG.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">02 — Offres de services</p>
+      <h2>Six lignes de prestation, cadrées et livrables</h2>
+      <p>Chaque mission que nous conduisons est bornée par un périmètre écrit, un calendrier et une liste de livrables définis avant démarrage.</p>
+    </div>
+    <div class="grid">
+
+      <article class="card">
+        <span class="num">S.01</span>
+        <h3>Audit &amp; contrôle de facturation</h3>
+        <p>Vérification systématique de la chaîne de facturation sur les trois axes exhaustivité, exactitude et conformité.</p>
+        <ul>
+          <li>Cartographie des flux et points de fuite</li>
+          <li>Détection des écarts et des non-facturés</li>
+          <li>Recommandations chiffrées et plan de correction</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <span class="num">S.02</span>
+        <h3>Data engineering &amp; reporting</h3>
+        <p>Construction de chaînes de données fiables, du système source au tableau de bord décisionnel.</p>
+        <ul>
+          <li>Extraction, nettoyage et réconciliation multi-sources</li>
+          <li>Modèles de données et indicateurs de pilotage</li>
+          <li>Tableaux de bord Excel / Python automatisés</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <span class="num">S.03</span>
+        <h3>Intelligence artificielle appliquée</h3>
+        <p>Mise en œuvre de modèles et d'agents utiles à un métier précis, avec évaluation honnête de leurs limites.</p>
+        <ul>
+          <li>Détection d'anomalies et scoring de risque</li>
+          <li>Moteurs de règles couplés à l'apprentissage automatique</li>
+          <li>Assistants métier et automatisation documentaire</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <span class="num">S.04</span>
+        <h3>Cybersécurité &amp; conformité</h3>
+        <p>Évaluation du niveau d'exposition et mise en place de mesures proportionnées aux moyens réels de l'organisation.</p>
+        <ul>
+          <li>Audit de configuration et de gestion des accès</li>
+          <li>Politique de sauvegarde et de continuité</li>
+          <li>Sensibilisation des équipes</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <span class="num">S.05</span>
+        <h3>Assistance aux marchés publics</h3>
+        <p>Préparation et structuration des dossiers techniques, côté acheteur comme côté soumissionnaire.</p>
+        <ul>
+          <li>Rédaction et relecture de mémoires techniques</li>
+          <li>Analyse de conformité des offres</li>
+          <li>Constitution des pièces administratives</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <span class="num">S.06</span>
+        <h3>Formation &amp; transfert de compétences</h3>
+        <p>Sessions courtes et opérationnelles, conçues sur les données réelles de l'organisation.</p>
+        <ul>
+          <li>Excel avancé et automatisation</li>
+          <li>Python pour l'analyse de données</li>
+          <li>Lecture critique des indicateurs</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="competences">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">03 — Compétences</p>
+      <h2>Un socle technique doublé d'une connaissance des processus</h2>
+      <p>Nous partons d'un principe simple : la valeur d'une mission tient rarement à l'outil seul, elle tient à la compréhension du processus que l'outil doit servir.</p>
+    </div>
+    <div class="skill-cols">
+
+      <div class="skill-block">
+        <h3>Données &amp; développement</h3>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">pandas</span><span class="tag">SQL</span>
+          <span class="tag">Excel avancé</span><span class="tag">VBA</span><span class="tag">Power Query</span>
+          <span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">API REST</span>
+        </div>
+      </div>
+
+      <div class="skill-block">
+        <h3>Analyse &amp; modélisation</h3>
+        <div class="tags">
+          <span class="tag">Moteurs de règles</span><span class="tag">Machine learning</span>
+          <span class="tag">Détection d'anomalies</span><span class="tag">Réconciliation</span>
+          <span class="tag">Tableaux de bord</span><span class="tag">Statistiques appliquées</span>
+        </div>
+      </div>
+
+      <div class="skill-block">
+        <h3>Domaines métier</h3>
+        <div class="tags">
+          <span class="tag">Facturation portuaire</span><span class="tag">Logistique</span>
+          <span class="tag">Contrôle interne</span><span class="tag">Marchés publics</span>
+          <span class="tag">Référentiel OHADA</span><span class="tag">Gestion des organisations</span>
+        </div>
+      </div>
+
+      <div class="skill-block">
+        <h3>Méthodes &amp; qualité</h3>
+        <div class="tags">
+          <span class="tag">Cartographie de processus</span><span class="tag">Piste d'audit</span>
+          <span class="tag">Documentation technique</span><span class="tag">Conduite du changement</span>
+          <span class="tag">Formation</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="methode" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">04 — Méthode</p>
+      <h2>Quatre étapes, un périmètre écrit à chaque fois</h2>
+      <p>Nous ne démarrons aucune mission sans que le résultat attendu et les limites de l'intervention ne soient posés noir sur blanc.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <b>ÉTAPE 01</b>
+        <h3>Cadrage</h3>
+        <p>Nous partons du besoin réel : sources de données disponibles, contraintes opérationnelles et objectifs mesurables.</p>
+      </div>
+      <div class="step">
+        <b>ÉTAPE 02</b>
+        <h3>Diagnostic</h3>
+        <p>Nous analysons processus et données, en signalant explicitement les zones d'incertitude méthodologique.</p>
+      </div>
+      <div class="step">
+        <b>ÉTAPE 03</b>
+        <h3>Construction</h3>
+        <p>Nous développons la solution ou rédigeons le livrable, avec points d'étape réguliers et validation intermédiaire.</p>
+      </div>
+      <div class="step">
+        <b>ÉTAPE 04</b>
+        <h3>Transfert</h3>
+        <p>Nous documentons, formons vos équipes et assurons une période d'accompagnement définie à l'avance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="etude-de-cas" class="case">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">05 — Étude de cas · Retour sur investissement</p>
+      <h2>Fiabilisation de la facturation et audit automatisé de flux massifs</h2>
+      <p>Infrastructures logistiques &amp; opérations critiques : nous avons fait passer le dispositif d'un contrôle manuel par échantillonnage à une réconciliation exhaustive en temps réel.</p>
+    </div>
+
+    <div class="bento">
+
+      <article class="b-card b-wide">
+        <div>
+          <span class="b-pill">Point de rupture initial</span>
+          <h3>Déperdition silencieuse &amp; asymétrie d'information</h3>
+          <p>Multiplication des enregistrements terrain, divergences entre manifestes (XML) et facturation finale. Le contrôle manuel par échantillonnage laissait subsister des zones grises et des anomalies tarifaires non détectées.</p>
+        </div>
+        <div class="b-foot">
+          <span>Complexité : multi-sources</span>
+          <span>Impact : perte de marge latente</span>
+        </div>
+      </article>
+
+      <article class="b-card">
+        <span class="b-label">Couverture d'audit</span>
+        <div>
+          <div class="b-num">100<em>%</em></div>
+          <p>Contrôle exhaustif des transactions, contre 5 à 10 % par sondage manuel auparavant.</p>
+        </div>
+        <div class="b-bar"><i></i></div>
+      </article>
+
+      <article class="b-card">
+        <span class="b-label">Temps de traitement</span>
+        <div>
+          <div class="b-num"><em>&lt; 5</em><span class="u">min</span></div>
+          <p>Réconciliation quasi instantanée de milliers de flux, au lieu de cycles de plusieurs semaines.</p>
+        </div>
+        <div class="b-live"><span>●</span> Cadence temps réel</div>
+      </article>
+
+      <article class="b-card">
+        <div>
+          <span class="b-label">Socle technique</span>
+          <h4>Moteur de réconciliation</h4>
+          <p>Pipelines de parsing structuré, algorithmes d'intégrité et détection native d'incohérences.</p>
+        </div>
+        <div class="b-stack">
+          <span>Python</span><span>Pandas</span><span>XML ETL</span><span>SQL</span>
+        </div>
+      </article>
+
+      <article class="b-card b-wide">
+        <div>
+          <span class="b-label">Méthode d'intervention</span>
+          <h4>Du diagnostic d'intégrité au tableau de bord exécutif</h4>
+          <div class="b-steps">
+            <div><b>01. Cadrage</b><p>Cartographie des points d'accès, tarifs et ruptures de données.</p></div>
+            <div><b>02. Automatisation</b><p>Normalisation des flux et implémentation des règles de conformité.</p></div>
+            <div><b>03. Pilotage</b><p>Génération de synthèses décisionnelles pour la gouvernance.</p></div>
+          </div>
+        </div>
+        <div class="b-foot"><span>Déploiement non intrusif sur les systèmes d'exploitation existants.</span></div>
+      </article>
+
+      <article class="b-card b-roi">
+        <div>
+          <div class="b-icon" aria-hidden="true">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          </div>
+          <h4>Impact financier net</h4>
+          <p>Recouvrement immédiat des déperditions de droits d'accès et suppression intégrale des doublons non facturés.</p>
+        </div>
+        <div class="b-foot">
+          <strong>Rentabilité constatée</strong>
+          <em>ROI net dès le premier trimestre</em>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="apropos">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">06 — À propos</p>
+      <h2>À l'intersection du contrôle opérationnel et de l'ingénierie analytique avancée</h2>
+      <p>Notre pratique s'est forgée au cœur d'environnements industriels, logistiques et institutionnels à forte intensité transactionnelle. Nous intervenons là où les processus conventionnels atteignent leurs limites d'échelle ou de fiabilité.</p>
+    </div>
+
+    <div class="split">
+      <div>
+        <p>Nos travaux sont dirigés par <strong>AMOUGOU Olivier</strong>, titulaire d'un <strong>Master en Génie Informatique, option Big Data et Intelligence Artificielle</strong> de l'École Nationale Supérieure Polytechnique de Yaoundé — Université de Yaoundé I, fort de <strong>dix années d'expérience professionnelle</strong> en environnement opérationnel, co-fondateur et Directeur Technique de <strong>TECHNOVA CAMEROUN SARL</strong>, société de droit OHADA.</p>
+        <p>Plutôt que d'opposer la compréhension métier à la haute technicité, nous réunissons une double culture :</p>
+
+        <div class="culture">
+          <div>
+            <b>CULTURE 01</b>
+            <h4>Audit &amp; contrôle interne</h4>
+            <p>Sens de la conformité réglementaire, étanchéité des processus de facturation, détection des anomalies de flux et atténuation des risques d'erreur ou de fraude.</p>
+          </div>
+          <div>
+            <b>CULTURE 02</b>
+            <h4>Ingénierie logicielle &amp; data</h4>
+            <p>Modélisation d'architectures décisionnelles, automatisation de pipelines d'extraction complexes et déploiement de modèles prédictifs robustes.</p>
+          </div>
+        </div>
+
+        <ul class="principes">
+          <li><strong>Sobriété et pragmatisme.</strong> Nous privilégions des solutions pérennes et directement exploitables par vos équipes internes, loin des promesses technologiques superflues.</li>
+          <li><strong>Neutralité méthodologique.</strong> Chacun de nos diagnostics repose sur des données auditables, garantissant une vérité terrain vérifiable pour vos arbitrages.</li>
+          <li><strong>Impact mesurable.</strong> Nos interventions sont corrélées à des indicateurs tangibles : recouvrement, réduction des cycles de reporting, fiabilisation du chiffre d'affaires.</li>
+          <li><strong>Confidentialité.</strong> Nous appliquons une gouvernance stricte de la sécurité des données et des flux informationnels traités.</li>
+        </ul>
+      </div>
+
+      <div class="facts">
+        <dl>
+          <div><dt>Formation</dt><dd>Master en Génie Informatique — Big Data &amp; IA</dd></div>
+          <div><dt>Établissement</dt><dd>ENSP Yaoundé — Université de Yaoundé I</dd></div>
+          <div><dt>Expérience</dt><dd>10 ans</dd></div>
+          <div><dt>Société</dt><dd>TECHNOVA CAMEROUN SARL</dd></div>
+          <div><dt>Base</dt><dd>Douala, Cameroun</dd></div>
+          <div><dt>Interventions</dt><dd>Sur site &amp; à distance</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <p class="eyebrow">07 — Contact</p>
+    <h2>Décrivez votre besoin, nous revenons vers vous sous 48 heures</h2>
+    <p>Un premier échange nous permet de vérifier avec vous la pertinence de l'intervention avant toute proposition chiffrée. Cet entretien n'engage à rien.</p>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <span>WhatsApp — réponse rapide</span>
+        <a href="https://wa.me/237676774643?text=Bonjour%2C%20je%20souhaite%20%C3%A9changer%20sur%20un%20projet." target="_blank" rel="noopener">+237 676 774 643</a>
+      </div>
+      <div class="contact-item">
+        <span>Courriel</span>
+        <a href="mailto:oamougou@gmail.com">oamougou@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span>Téléphone</span>
+        <a href="tel:+237676774643">+237 676 774 643</a>
+      </div>
+      <div class="contact-item">
+        <span>Localisation</span>
+        <a href="#apropos">Douala, Cameroun</a>
+      </div>
+    </div>
+
+    <div class="form-wrap">
+      <h3>Formulaire de prise de contact</h3>
+      <p class="hint">Réponse sous 48 heures ouvrées. Pour un échange immédiat, privilégiez WhatsApp.</p>
+
+      <!-- ▼ REMPLACER l'action ci-dessous par votre identifiant Formspree ou Web3Forms ▼ -->
+      <form action="https://formspree.io/f/VOTRE_IDENTIFIANT" method="POST">
+        <div class="field">
+          <label for="f-nom">Nom et prénom</label>
+          <input id="f-nom" type="text" name="nom" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="f-org">Organisation</label>
+          <input id="f-org" type="text" name="organisation" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="f-mail">Courriel</label>
+          <input id="f-mail" type="email" name="email" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="f-tel">Téléphone</label>
+          <input id="f-tel" type="tel" name="telephone" autocomplete="tel">
+        </div>
+        <div class="field full">
+          <label for="f-obj">Nature de la demande</label>
+          <select id="f-obj" name="objet">
+            <option>Audit &amp; contrôle de facturation</option>
+            <option>Data engineering &amp; reporting</option>
+            <option>Intelligence artificielle appliquée</option>
+            <option>Cybersécurité &amp; conformité</option>
+            <option>Assistance aux marchés publics</option>
+            <option>Formation &amp; transfert de compétences</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="f-msg">Description du besoin</label>
+          <textarea id="f-msg" name="message" required placeholder="Contexte, volumétrie, échéance souhaitée…"></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="Nouvelle demande — site prestations intellectuelles">
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" aria-hidden="true">
+        <button type="submit">Envoyer la demande</button>
+        <p class="rgpd">Les informations transmises servent uniquement à répondre à votre demande. Elles ne sont ni cédées ni utilisées à des fins commerciales.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 AMOUGOU Olivier — Prestations intellectuelles</span>
+    <span>Douala, Cameroun</span>
+  </div>
+</footer>
+
+<!-- ▼ SUIVI DE FRÉQUENTATION — décommenter APRÈS avoir créé le compte ▼ -->
+<!-- Option A — Cloudflare Web Analytics (gratuit, sans cookie) :
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "VOTRE_TOKEN"}'></script>
+-->
+<!-- Option B — GoatCounter (gratuit, sans cookie) :
+<script data-goatcounter="https://VOTRE-COMPTE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+-->
+
+</body>
+</html>
