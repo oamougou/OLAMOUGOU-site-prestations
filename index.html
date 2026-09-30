@@ -15,8 +15,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#060b13">
+<script>
+  // Theme before first paint (no flash): saved choice, else the OS preference.
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    document.documentElement.dataset.theme = t;
+    document.querySelector('meta[name="theme-color"]').content = t === 'light' ? '#f3f5f8' : '#060b13';
+  })();
+</script>
 <title>AMOUGOU Olivier — Prestations intellectuelles</title>
 <meta name="description" content="Conseil et ingénierie en données, intelligence artificielle et contrôle des processus. Audit de flux, fiabilisation de la facturation et tableaux de bord décisionnels. Douala, Cameroun.">
 <meta name="author" content="AMOUGOU Olivier">
@@ -51,6 +61,19 @@
     --accent-ink: #04121a;
     --gold: #e3b466;
     --card: rgba(8, 15, 26, 0.58);
+    --glass: rgba(8, 15, 26, 0.35);
+    --tag-bg: rgba(8, 15, 26, 0.4);
+    --header-bg: rgba(6, 11, 19, 0.62);
+    --field: rgba(6, 11, 19, 0.5);
+    --field-focus: rgba(6, 11, 19, 0.75);
+    --footer-bg: rgba(6, 11, 19, 0.6);
+    --scrim: linear-gradient(90deg, rgba(6,11,19,0.82) 0%, rgba(6,11,19,0.55) 32%, rgba(6,11,19,0) 58%);
+    --scrim-mobile: rgba(6,11,19,0.22);
+    --accent-hover: #7fcde3;
+    --danger: #ff8a7a;
+    --alert: #ff6b5e;
+    --cursor-ring: rgba(232,238,244,0.45);
+    --nogl-glow: #0f2a3b;
     --gutter: clamp(1rem, 4.5vw, 4rem);
     --serif: "Instrument Serif", ui-serif, Georgia, serif;
     --sans: "Inter Tight", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -61,6 +84,34 @@
     --safe-b: env(safe-area-inset-bottom, 0px);
     --safe-l: env(safe-area-inset-left, 0px);
   }
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --bg: #f3f5f8;
+    --bg-2: #e4e9f0;
+    --ink: #0b1826;
+    --muted: rgba(11, 24, 38, 0.72);
+    --faint: rgba(11, 24, 38, 0.56);
+    --line: rgba(11, 24, 38, 0.1);
+    --line-2: rgba(11, 24, 38, 0.2);
+    --accent: #12708c;
+    --accent-ink: #ffffff;
+    --accent-hover: #0d5a71;
+    --gold: #9a6a18;
+    --card: rgba(255, 255, 255, 0.68);
+    --glass: rgba(255, 255, 255, 0.5);
+    --tag-bg: rgba(255, 255, 255, 0.6);
+    --header-bg: rgba(243, 245, 248, 0.72);
+    --field: rgba(255, 255, 255, 0.7);
+    --field-focus: #ffffff;
+    --footer-bg: rgba(243, 245, 248, 0.72);
+    --scrim: linear-gradient(90deg, rgba(243,245,248,0.9) 0%, rgba(243,245,248,0.66) 32%, rgba(243,245,248,0) 58%);
+    --scrim-mobile: rgba(243,245,248,0.45);
+    --danger: #b3261e;
+    --alert: #c7372b;
+    --cursor-ring: rgba(11,24,38,0.4);
+    --nogl-glow: #d5e6ee;
+  }
+  :root[data-theme="dark"] { color-scheme: dark; }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html {
@@ -98,10 +149,10 @@
   }
   .scrim {
     position: fixed; inset: 0; z-index: 0; pointer-events: none;
-    background: linear-gradient(90deg, rgba(6,11,19,0.82) 0%, rgba(6,11,19,0.55) 32%, rgba(6,11,19,0) 58%);
+    background: var(--scrim);
   }
-  @media (max-width: 900px) { .scrim { background: rgba(6,11,19,0.22); } }
-  body.no-webgl { background: radial-gradient(ellipse at 70% 30%, #0f2a3b 0%, var(--bg) 60%) fixed; }
+  @media (max-width: 900px) { .scrim { background: var(--scrim-mobile); } }
+  body.no-webgl { background: radial-gradient(ellipse at 70% 30%, var(--nogl-glow) 0%, var(--bg) 60%) fixed; }
   body.no-webgl #webgl, body.no-webgl .hud { display: none; }
 
   /* ── header ─────────────────────────────────────────────── */
@@ -113,12 +164,28 @@
     border-bottom: 1px solid transparent;
   }
   .site-header.scrolled {
-    background: rgba(6, 11, 19, 0.62);
+    background: var(--header-bg);
     backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
     border-bottom-color: var(--line);
   }
   .brand { display: flex; align-items: center; gap: 0.7rem; font-weight: 600; letter-spacing: -0.01em; }
   .brand svg { width: 28px; height: 28px; flex: none; }
+  .brand svg [stroke], #preloader svg [stroke] { stroke: var(--accent); }
+  .brand svg [fill="#4fb3d0"], #preloader svg [fill="#4fb3d0"] { fill: var(--accent); }
+  .header-actions { display: flex; align-items: center; gap: 0.6rem; }
+  .theme-toggle {
+    display: inline-grid; place-items: center; flex: none;
+    width: 2.45rem; height: 2.45rem; border-radius: 50%;
+    border: 1px solid var(--line-2); background: var(--glass); color: var(--ink);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    cursor: pointer; transition: border-color 0.2s ease, transform 0.16s var(--ease-out);
+  }
+  .theme-toggle:active { transform: scale(0.94); }
+  .theme-toggle svg { width: 18px; height: 18px; grid-area: 1 / 1; transition: transform 0.5s var(--ease-out), opacity 0.3s ease; }
+  .theme-toggle .i-moon { opacity: 0; transform: rotate(-90deg) scale(0.6); }
+  :root[data-theme="light"] .theme-toggle .i-sun { opacity: 0; transform: rotate(90deg) scale(0.6); }
+  :root[data-theme="light"] .theme-toggle .i-moon { opacity: 1; transform: none; }
+  @media (hover: hover) and (pointer: fine) { .theme-toggle:hover { border-color: var(--accent); } }
   .brand small { display: block; font: 400 0.68rem/1.2 var(--mono); color: var(--faint); letter-spacing: 0.06em; text-transform: uppercase; }
   .nav { display: flex; gap: clamp(1rem, 2vw, 2rem); font-size: 0.88rem; color: var(--muted); }
   .nav a { position: relative; transition: color 0.3s ease; }
@@ -132,7 +199,7 @@
     padding: 0.85rem 1.3rem; border-radius: 999px;
     font: 500 0.92rem/1 var(--sans); letter-spacing: -0.005em;
     border: 1px solid var(--line-2); color: var(--ink);
-    background: rgba(8, 15, 26, 0.35);
+    background: var(--glass);
     backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
     transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.16s var(--ease-out);
     cursor: pointer;
@@ -146,7 +213,7 @@
     .nav a:hover { color: var(--ink); }
     .nav a:hover::after { transform: scaleX(1); transform-origin: left; }
     .btn:hover { border-color: var(--accent); }
-    .btn.primary:hover { background: #7fcde3; }
+    .btn.primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
     .btn:hover .arrow { transform: translateX(3px); }
   }
   .btn.small { padding: 0.62rem 1rem; font-size: 0.84rem; }
@@ -202,7 +269,7 @@
   .tag {
     display: inline-block; padding: 0.3rem 0.7rem; border-radius: 999px;
     border: 1px solid var(--line-2); font: 400 0.76rem/1.3 var(--mono); color: var(--muted);
-    background: rgba(8, 15, 26, 0.4);
+    background: var(--tag-bg);
   }
   .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
   .mono { font-family: var(--mono); }
@@ -268,7 +335,7 @@
   .mini-steps { display: grid; gap: 0.9rem; margin: 1rem 0; }
   .mini-steps div { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.8rem; font-size: 0.9rem; color: var(--muted); }
   .mini-steps b { color: var(--ink); font-weight: 500; }
-  .impact { border-color: rgba(79, 179, 208, 0.35); background: linear-gradient(135deg, rgba(79,179,208,0.12), rgba(8,15,26,0.6) 60%); }
+  .impact { border-color: rgba(79, 179, 208, 0.35); background: linear-gradient(135deg, rgba(79,179,208,0.12), var(--card) 60%); }
   .impact .roi { margin-top: 1.2rem; font: 400 1.6rem/1.15 var(--serif); color: var(--ink); }
   .impact .roi em { color: var(--accent); }
 
@@ -304,19 +371,19 @@
   label { display: grid; gap: 0.4rem; font: 400 0.72rem/1.3 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); }
   input, select, textarea {
     width: 100%; font: 400 1rem/1.4 var(--sans); color: var(--ink);   /* 16px min: iOS zooms into smaller inputs */
-    background: rgba(6, 11, 19, 0.5); border: 1px solid var(--line-2); border-radius: 10px;
+    background: var(--field); border: 1px solid var(--line-2); border-radius: 10px;
     padding: 0.8rem 0.9rem; transition: border-color 0.3s ease, background 0.3s ease;
     text-transform: none; letter-spacing: 0;
   }
   select option { background: var(--bg-2); }
   textarea { min-height: 8.5rem; resize: vertical; }
-  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); background: rgba(6, 11, 19, 0.75); }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); background: var(--field-focus); }
   .form-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; align-items: center; }
   .privacy { font-size: 0.8rem; color: var(--faint); }
   .form-status { font-size: 0.92rem; min-height: 0; }
   .form-status:empty { display: none; }
   .form-status[data-kind="ok"] { color: var(--accent); }
-  .form-status[data-kind="error"] { color: #ff8a7a; }
+  .form-status[data-kind="error"] { color: var(--danger); }
   .form-status[data-kind="pending"] { color: var(--muted); }
   .btn:disabled { opacity: 0.55; cursor: progress; }
   textarea::placeholder { color: var(--faint); }
@@ -327,7 +394,7 @@
     border-top: 1px solid var(--line);
     display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
     font: 400 0.74rem/1.5 var(--mono); color: var(--faint); letter-spacing: 0.04em;
-    background: rgba(6, 11, 19, 0.6);
+    background: var(--footer-bg);
   }
 
   /* ── HUD ────────────────────────────────────────────────── */
@@ -339,7 +406,7 @@
   }
   .hud.on { opacity: 1; }
   .hud b { color: var(--ink); font-weight: 400; }
-  .hud .anom b { color: #ff6b5e; transition: color 0.6s ease; }
+  .hud .anom b { color: var(--alert); transition: color 0.6s ease; }
   .hud .anom.clean b { color: var(--accent); }
   .progress { position: fixed; right: 0; top: 0; bottom: 0; width: 2px; z-index: 40; background: var(--line); pointer-events: none; }
   .progress i { display: block; width: 100%; height: 100%; background: var(--accent); transform-origin: top; transform: scaleY(0); }
@@ -363,7 +430,7 @@
   .cursor, .cursor-dot { position: fixed; left: 0; top: 0; z-index: 9500; pointer-events: none; border-radius: 50%; opacity: 0; transition: opacity 0.4s ease; }
   /* JS moves .cursor with transform; the ring lives on ::before so it can scale without animating width/height */
   .cursor { width: 36px; height: 36px; margin: -18px 0 0 -18px; }
-  .cursor::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(232,238,244,0.45); transition: transform 0.3s var(--ease-out), border-color 0.2s ease, background 0.2s ease; }
+  .cursor::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 1px solid var(--cursor-ring); transition: transform 0.3s var(--ease-out), border-color 0.2s ease, background 0.2s ease; }
   .cursor.hover::before { transform: scale(1.78); border-color: var(--accent); background: rgba(79,179,208,0.08); }
   .cursor-dot { width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; background: var(--accent); }
   body.has-cursor .cursor, body.has-cursor .cursor-dot { opacity: 1; }
@@ -442,7 +509,13 @@
     <a href="#apropos" data-scroll>À propos</a>
     <a href="#contact" data-scroll>Contact</a>
   </nav>
-  <a class="btn small primary" href="https://wa.me/237676774643?text=Bonjour%2C%20je%20souhaite%20%C3%A9changer%20sur%20un%20projet." target="_blank" rel="noopener">WhatsApp<span class="label-long">&nbsp;— échanger</span> <span class="arrow">→</span></a>
+  <div class="header-actions">
+    <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Activer le mode clair" title="Activer le mode clair">
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <a class="btn small primary" href="https://wa.me/237676774643?text=Bonjour%2C%20je%20souhaite%20%C3%A9changer%20sur%20un%20projet." target="_blank" rel="noopener">WhatsApp<span class="label-long">&nbsp;— échanger</span> <span class="arrow">→</span></a>
+  </div>
 </header>
 
 <div class="hud" aria-hidden="true">
@@ -783,6 +856,31 @@ document.querySelectorAll('a[data-scroll]').forEach((a) => {
 });
 
 const header = document.querySelector('.site-header');
+
+// ═════════════════════════════════════════════════════════════════════
+// Light / dark theme
+// ═════════════════════════════════════════════════════════════════════
+const themeToggle = document.getElementById('theme-toggle');
+const themeMeta = document.querySelector('meta[name="theme-color"]');
+const systemLight = window.matchMedia('(prefers-color-scheme: light)');
+function setTheme(theme, persist) {
+  document.documentElement.dataset.theme = theme;
+  themeMeta.content = theme === 'light' ? '#f3f5f8' : '#060b13';
+  const label = theme === 'light' ? 'Activer le mode sombre' : 'Activer le mode clair';
+  themeToggle.setAttribute('aria-label', label);
+  themeToggle.title = label;
+  if (persist) { try { localStorage.setItem('theme', theme); } catch (e) {} }
+  if (three) three.applyTheme(theme);
+}
+themeToggle.addEventListener('click', () => {
+  setTheme(document.documentElement.dataset.theme === 'light' ? 'dark' : 'light', true);
+});
+// follow the OS only until the visitor has made an explicit choice
+systemLight.addEventListener('change', (e) => {
+  let saved = null;
+  try { saved = localStorage.getItem('theme'); } catch (err) {}
+  if (!saved) setTheme(e.matches ? 'light' : 'dark', false);
+});
 const progressBar = document.querySelector('.progress i');
 
 // ═════════════════════════════════════════════════════════════════════
@@ -836,6 +934,7 @@ function computeStage(scrollY) {
 // ═════════════════════════════════════════════════════════════════════
 let three = null;
 if (hasGL) three = initScene();
+setTheme(document.documentElement.dataset.theme, false);
 
 function initScene() {
   const canvas = document.getElementById('webgl');
@@ -1011,6 +1110,7 @@ function initScene() {
     uWhite: { value: new THREE.Color('#dff3fb') },
     uRed: { value: new THREE.Color('#ff4a3d') },
     uGold: { value: new THREE.Color('#e3b466') },
+    uLight: { value: 0 },
   };
 
   const material = new THREE.ShaderMaterial({
@@ -1022,7 +1122,7 @@ function initScene() {
       precision highp float;
       attribute vec3 aChaos, aCube, aSphere, aSteps, aBars, aRings, aLogo;
       attribute vec4 aRand;
-      uniform float uTime, uFrom, uTo, uMix, uIntro, uDim, uSize, uPixelRatio, uMouseStrength;
+      uniform float uTime, uFrom, uTo, uMix, uIntro, uDim, uSize, uPixelRatio, uMouseStrength, uLight;
       uniform vec3 uMouse, uCyan, uWhite, uRed, uGold;
       varying vec3 vColor;
       varying float vAlpha;
@@ -1089,15 +1189,15 @@ function initScene() {
         col = mix(col, uGold, wRings * step(0.5, aRand.y) * 0.9);
         float anomaly = step(aRand.w, 0.04) * wChaos;
         float pulse = 0.65 + 0.35 * sin(t * 3.0 + aRand.x * 40.0);
-        col = mix(col, uRed * 1.8 * pulse, anomaly);
-        col *= 1.0 + step(0.988, aRand.z) * 2.2;          // sparse sparkles feed the bloom
+        col = mix(col, uRed * mix(1.8, 1.0, uLight) * pulse, anomaly);
+        col *= 1.0 + step(0.988, aRand.z) * 2.2 * (1.0 - uLight);   // sparse sparkles feed the bloom (dark only)
 
         // flow wraps at the edges: fade in/out there
         float u = fract(aRand.y + t * 0.022 * (0.7 + aRand.z * 0.6));
         float edge = smoothstep(0.0, 0.08, u) * (1.0 - smoothstep(0.92, 1.0, u));
 
         vColor = col;
-        vAlpha = uDim * (0.45 + aRand.y * 0.4) * mix(1.0, edge, wFlow) * mix(0.15, 1.0, intro);
+        vAlpha = uDim * (0.45 + aRand.y * 0.4) * mix(1.0, edge, wFlow) * mix(0.15, 1.0, intro) * mix(1.0, 1.7, uLight);
 
         vec4 mv = modelViewMatrix * vec4(p, 1.0);
         gl_Position = projectionMatrix * mv;
@@ -1178,7 +1278,32 @@ function initScene() {
   });
   composer.addPass(grainPass);
 
-  return { renderer, scene, camera, composer, uniforms, group, dustPts, grainPass, bloomPass, N };
+  // ── theme: additive glow only reads on a dark background; light mode uses ink-like points
+  const palettes = {
+    dark:  { bg: 0x060b13, cyan: '#4fb3d0', white: '#dff3fb', red: '#ff4a3d', gold: '#e3b466', dust: 0x4fb3d0 },
+    light: { bg: 0xf3f5f8, cyan: '#1a7f9e', white: '#0d2a3f', red: '#d8392b', gold: '#b07f25', dust: 0x1a7f9e },
+  };
+  function applyTheme(theme) {
+    const light = theme === 'light', pal = palettes[light ? 'light' : 'dark'];
+    scene.background.set(pal.bg);
+    uniforms.uCyan.value.set(pal.cyan);
+    uniforms.uWhite.value.set(pal.white);
+    uniforms.uRed.value.set(pal.red);
+    uniforms.uGold.value.set(pal.gold);
+    uniforms.uLight.value = light ? 1 : 0;
+    material.blending = light ? THREE.NormalBlending : THREE.AdditiveBlending;
+    dustMat.blending = material.blending;
+    dustMat.color.set(pal.dust);
+    dustMat.opacity = light ? 0.22 : 0.35;
+    renderer.toneMapping = light ? THREE.NoToneMapping : THREE.ACESFilmicToneMapping;
+    bloomPass.enabled = !light;
+    vignettePass.uniforms.uDarkness.value = light ? 0.08 : 0.6;
+    grainPass.uniforms.uIntensity.value = (isMobile ? 0.035 : 0.05) * (light ? 0.5 : 1);
+    material.needsUpdate = dustMat.needsUpdate = true;
+  }
+  applyTheme(document.documentElement.dataset.theme);
+
+  return { renderer, scene, camera, composer, uniforms, group, dustPts, grainPass, bloomPass, applyTheme, N };
 }
 
 // ═════════════════════════════════════════════════════════════════════
