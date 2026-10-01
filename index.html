@@ -41,6 +41,28 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://olivieramougou.com/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "AMOUGOU Olivier — Prestations intellectuelles",
+  "url": "https://olivieramougou.com/",
+  "image": "https://olivieramougou.com/og-image.png",
+  "description": "Conseil et ingénierie en données, intelligence artificielle et contrôle des processus. Audit de flux, fiabilisation de la facturation et tableaux de bord décisionnels.",
+  "email": "oamougou@gmail.com",
+  "telephone": "+237676774643",
+  "address": { "@type": "PostalAddress", "addressLocality": "Douala", "addressCountry": "CM" },
+  "areaServed": "CM",
+  "knowsLanguage": ["fr", "en"],
+  "founder": {
+    "@type": "Person",
+    "name": "AMOUGOU Olivier",
+    "jobTitle": "Directeur Technique, TECHNOVA CAMEROUN SARL",
+    "alumniOf": "École Nationale Supérieure Polytechnique de Yaoundé"
+  },
+  "serviceType": ["Audit et contrôle de facturation", "Data engineering et reporting", "Intelligence artificielle appliquée", "Cybersécurité et conformité", "Assistance aux marchés publics", "Formation et transfert de compétences"]
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230d1b2a'/%3E%3Crect x='7' y='7' width='18' height='18' fill='none' stroke='%234fb3d0' stroke-width='2'/%3E%3Crect x='17' y='11' width='5' height='5' fill='%234fb3d0'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -552,8 +574,8 @@
   </section>
 
   <!-- 01 — cube (reconciled) -->
-  <section class="section" id="positionnement" data-shape="1" data-x="2.5" data-dim="1">
-    <div class="wrap"><div class="col">
+  <section class="section" id="positionnement" data-shape="1" data-x="3.1" data-dim="1">
+    <div class="wrap"><div class="col" style="max-width:36rem">
       <span class="kicker" data-reveal>01 — Positionnement stratégique</span>
       <h2 data-lines>
         <span class="line"><span>Transformer la complexité</span></span>
@@ -1498,11 +1520,11 @@ function setupReveals() {
     onEnter: (els) => gsap.to(els, { autoAlpha: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.06 }),
   });
   document.querySelectorAll('[data-count]').forEach((el) => {
+    // the real value stays in the DOM until the count-up starts, so crawlers and link previews never see 0
     const end = +el.dataset.count, obj = { v: 0 };
-    el.textContent = '0';
     ScrollTrigger.create({
       trigger: el, start: 'top 85%', once: true,
-      onEnter: () => gsap.to(obj, { v: end, duration: 2, ease: 'power2.out', onUpdate: () => { el.textContent = Math.round(obj.v); } }),
+      onEnter: () => gsap.fromTo(obj, { v: 0 }, { v: end, duration: 2, ease: 'power2.out', onUpdate: () => { el.textContent = Math.round(obj.v); } }),
     });
   });
 }
