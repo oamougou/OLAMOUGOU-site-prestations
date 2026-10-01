@@ -68,7 +68,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="modulepreload" href="https://unpkg.com/three@0.170.0/build/three.module.js">
+<link rel="modulepreload" href="./vendor/three/three.module.min.js">
 
 <style>
   :root {
@@ -442,8 +442,8 @@
   }
   #preloader.done { opacity: 0; visibility: hidden; }
   #preloader svg { width: 56px; height: 56px; }
-  #preloader svg rect.frame { stroke-dasharray: 72; stroke-dashoffset: 72; animation: draw 0.8s cubic-bezier(.6,0,.2,1) forwards; }
-  #preloader svg rect.dot { opacity: 0; animation: fadein 0.3s 0.6s forwards; }
+  #preloader svg rect.frame { stroke-dasharray: 72; stroke-dashoffset: 72; animation: draw 0.45s cubic-bezier(.6,0,.2,1) forwards; }
+  #preloader svg rect.dot { opacity: 0; animation: fadein 0.2s 0.3s forwards; }
   @keyframes draw { to { stroke-dashoffset: 0; } }
   @keyframes fadein { to { opacity: 1; } }
   .preloader-counter { font: 400 0.8rem/1 var(--mono); letter-spacing: 0.2em; color: var(--faint); }
@@ -487,11 +487,11 @@
 <script type="importmap">
 {
   "imports": {
-    "three": "https://unpkg.com/three@0.170.0/build/three.module.js",
-    "three/addons/": "https://unpkg.com/three@0.170.0/examples/jsm/",
-    "gsap": "https://esm.sh/gsap@3.12.5",
-    "gsap/ScrollTrigger": "https://esm.sh/gsap@3.12.5/ScrollTrigger",
-    "lenis": "https://unpkg.com/lenis@1.1.0/dist/lenis.mjs"
+    "three": "./vendor/three/three.module.min.js",
+    "three/addons/": "./vendor/three/addons/",
+    "gsap": "./vendor/gsap/index.js",
+    "gsap/ScrollTrigger": "./vendor/gsap/ScrollTrigger.js",
+    "lenis": "./vendor/lenis/lenis.mjs"
   }
 }
 </script>
@@ -536,7 +536,7 @@
       <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
       <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
     </button>
-    <a class="btn small primary" href="https://wa.me/237676774643?text=Bonjour%2C%20je%20souhaite%20%C3%A9changer%20sur%20un%20projet." target="_blank" rel="noopener">WhatsApp<span class="label-long">&nbsp;— échanger</span> <span class="arrow">→</span></a>
+    <a class="btn small primary" href="https://wa.me/237676774643?text=Bonjour%2C%20je%20souhaite%20%C3%A9changer%20sur%20un%20projet." target="_blank" rel="noopener"><span>WhatsApp<span class="label-long"> — échanger</span></span><span class="arrow">→</span></a>
   </div>
 </header>
 
@@ -606,42 +606,42 @@
       </h2>
       <p class="lead" data-reveal>Chaque mission que nous conduisons est bornée par un périmètre écrit, un calendrier et une liste de livrables définis avant démarrage.</p>
       <div class="grid-3">
-        <article class="card service" data-reveal>
+        <div class="card service" data-reveal>
           <span class="num"><span>S.01</span><span>↗</span></span>
           <h3>Audit &amp; contrôle de facturation</h3>
           <p>Vérification systématique de la chaîne de facturation sur les trois axes exhaustivité, exactitude et conformité.</p>
           <ul><li>Cartographie des flux et points de fuite</li><li>Détection des écarts et des non-facturés</li><li>Recommandations chiffrées et plan de correction</li></ul>
-        </article>
-        <article class="card service" data-reveal>
+        </div>
+        <div class="card service" data-reveal>
           <span class="num"><span>S.02</span><span>↗</span></span>
           <h3>Data engineering &amp; reporting</h3>
           <p>Construction de chaînes de données fiables, du système source au tableau de bord décisionnel.</p>
           <ul><li>Extraction, nettoyage et réconciliation multi-sources</li><li>Modèles de données et indicateurs de pilotage</li><li>Tableaux de bord Excel / Python automatisés</li></ul>
-        </article>
-        <article class="card service" data-reveal>
+        </div>
+        <div class="card service" data-reveal>
           <span class="num"><span>S.03</span><span>↗</span></span>
           <h3>Intelligence artificielle appliquée</h3>
           <p>Mise en œuvre de modèles et d'agents utiles à un métier précis, avec évaluation honnête de leurs limites.</p>
           <ul><li>Détection d'anomalies et scoring de risque</li><li>Moteurs de règles couplés à l'apprentissage automatique</li><li>Assistants métier et automatisation documentaire</li></ul>
-        </article>
-        <article class="card service" data-reveal>
+        </div>
+        <div class="card service" data-reveal>
           <span class="num"><span>S.04</span><span>↗</span></span>
           <h3>Cybersécurité &amp; conformité</h3>
           <p>Évaluation du niveau d'exposition et mise en place de mesures proportionnées aux moyens réels de l'organisation.</p>
           <ul><li>Audit de configuration et de gestion des accès</li><li>Politique de sauvegarde et de continuité</li><li>Sensibilisation des équipes</li></ul>
-        </article>
-        <article class="card service" data-reveal>
+        </div>
+        <div class="card service" data-reveal>
           <span class="num"><span>S.05</span><span>↗</span></span>
           <h3>Assistance aux marchés publics</h3>
           <p>Préparation et structuration des dossiers techniques, côté acheteur comme côté soumissionnaire.</p>
           <ul><li>Rédaction et relecture de mémoires techniques</li><li>Analyse de conformité des offres</li><li>Constitution des pièces administratives</li></ul>
-        </article>
-        <article class="card service" data-reveal>
+        </div>
+        <div class="card service" data-reveal>
           <span class="num"><span>S.06</span><span>↗</span></span>
           <h3>Formation &amp; transfert de compétences</h3>
           <p>Sessions courtes et opérationnelles, conçues sur les données réelles de l'organisation.</p>
           <ul><li>Excel avancé et automatisation</li><li>Python pour l'analyse de données</li><li>Lecture critique des indicateurs</li></ul>
-        </article>
+        </div>
       </div>
     </div>
   </section>
@@ -679,10 +679,10 @@
         <p data-reveal>Nous ne démarrons aucune mission sans que le résultat attendu et les limites de l'intervention ne soient posés noir sur blanc.</p>
       </div>
       <div class="steps">
-        <article class="card step" data-reveal><span class="num">ÉTAPE 01</span><h3>Cadrage</h3><p>Nous partons du besoin réel : sources de données disponibles, contraintes opérationnelles et objectifs mesurables.</p></article>
-        <article class="card step" data-reveal><span class="num">ÉTAPE 02</span><h3>Diagnostic</h3><p>Nous analysons processus et données, en signalant explicitement les zones d'incertitude méthodologique.</p></article>
-        <article class="card step" data-reveal><span class="num">ÉTAPE 03</span><h3>Construction</h3><p>Nous développons la solution ou rédigeons le livrable, avec points d'étape réguliers et validation intermédiaire.</p></article>
-        <article class="card step" data-reveal><span class="num">ÉTAPE 04</span><h3>Transfert</h3><p>Nous documentons, formons vos équipes et assurons une période d'accompagnement définie à l'avance.</p></article>
+        <div class="card step" data-reveal><span class="num">ÉTAPE 01</span><h3>Cadrage</h3><p>Nous partons du besoin réel : sources de données disponibles, contraintes opérationnelles et objectifs mesurables.</p></div>
+        <div class="card step" data-reveal><span class="num">ÉTAPE 02</span><h3>Diagnostic</h3><p>Nous analysons processus et données, en signalant explicitement les zones d'incertitude méthodologique.</p></div>
+        <div class="card step" data-reveal><span class="num">ÉTAPE 03</span><h3>Construction</h3><p>Nous développons la solution ou rédigeons le livrable, avec points d'étape réguliers et validation intermédiaire.</p></div>
+        <div class="card step" data-reveal><span class="num">ÉTAPE 04</span><h3>Transfert</h3><p>Nous documentons, formons vos équipes et assurons une période d'accompagnement définie à l'avance.</p></div>
       </div>
     </div>
   </section>
@@ -698,30 +698,30 @@
       <p class="lead" data-reveal>Infrastructures logistiques &amp; opérations critiques : nous avons fait passer le dispositif d'un contrôle manuel par échantillonnage à une réconciliation exhaustive en temps réel.</p>
 
       <div class="case-grid">
-        <article class="card wide" data-reveal>
+        <div class="card wide" data-reveal>
           <span class="label">Point de rupture initial</span>
           <h3>Déperdition silencieuse &amp; asymétrie d'information</h3>
           <p style="margin-top:.7rem">Multiplication des enregistrements terrain, divergences entre manifestes (XML) et facturation finale. Le contrôle manuel par échantillonnage laissait subsister des zones grises et des anomalies tarifaires non détectées.</p>
           <div class="meta-row"><span class="tag">Complexité : multi-sources</span><span class="tag">Impact : perte de marge latente</span></div>
-        </article>
-        <article class="card kpi" data-reveal>
+        </div>
+        <div class="card kpi" data-reveal>
           <span class="label">Couverture d'audit</span>
           <strong><span data-count="100">100</span><i>%</i></strong>
           <p>Contrôle exhaustif des transactions, contre 5 à 10 % par sondage manuel auparavant.</p>
-        </article>
-        <article class="card kpi" data-reveal>
+        </div>
+        <div class="card kpi" data-reveal>
           <span class="label">Temps de traitement</span>
           <strong>&lt;&nbsp;5<i>min</i></strong>
           <p>Réconciliation quasi instantanée de milliers de flux, au lieu de cycles de plusieurs semaines.</p>
           <span class="live">Cadence temps réel</span>
-        </article>
-        <article class="card" data-reveal>
+        </div>
+        <div class="card" data-reveal>
           <span class="label">Socle technique</span>
           <h4>Moteur de réconciliation</h4>
           <p style="margin-top:.5rem;font-size:.92rem">Pipelines de parsing structuré, algorithmes d'intégrité et détection native d'incohérences.</p>
           <div class="meta-row"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">XML ETL</span><span class="tag">SQL</span></div>
-        </article>
-        <article class="card" data-reveal>
+        </div>
+        <div class="card" data-reveal>
           <span class="label">Méthode d'intervention</span>
           <h4>Du diagnostic d'intégrité au tableau de bord exécutif</h4>
           <div class="mini-steps">
@@ -730,12 +730,12 @@
             <div><b>03. Pilotage</b><span>Génération de synthèses décisionnelles pour la gouvernance.</span></div>
           </div>
           <p style="font-size:.85rem">Déploiement non intrusif sur les systèmes d'exploitation existants.</p>
-        </article>
-        <article class="card impact" data-reveal>
+        </div>
+        <div class="card impact" data-reveal>
           <span class="label">Impact financier net</span>
           <p>Recouvrement immédiat des déperditions de droits d'accès et suppression intégrale des doublons non facturés.</p>
           <p class="roi">Rentabilité constatée — <em>ROI net dès le premier trimestre</em></p>
-        </article>
+        </div>
       </div>
     </div>
   </section>
@@ -755,8 +755,8 @@
         <p>Plutôt que d'opposer la compréhension métier à la haute technicité, nous réunissons une double culture :</p>
       </div>
       <div class="cultures">
-        <article class="card culture" data-reveal><span class="num">CULTURE 01</span><h4>Audit &amp; contrôle interne</h4><p>Sens de la conformité réglementaire, étanchéité des processus de facturation, détection des anomalies de flux et atténuation des risques d'erreur ou de fraude.</p></article>
-        <article class="card culture" data-reveal><span class="num">CULTURE 02</span><h4>Ingénierie logicielle &amp; data</h4><p>Modélisation d'architectures décisionnelles, automatisation de pipelines d'extraction complexes et déploiement de modèles prédictifs robustes.</p></article>
+        <div class="card culture" data-reveal><span class="num">CULTURE 01</span><h4>Audit &amp; contrôle interne</h4><p>Sens de la conformité réglementaire, étanchéité des processus de facturation, détection des anomalies de flux et atténuation des risques d'erreur ou de fraude.</p></div>
+        <div class="card culture" data-reveal><span class="num">CULTURE 02</span><h4>Ingénierie logicielle &amp; data</h4><p>Modélisation d'architectures décisionnelles, automatisation de pipelines d'extraction complexes et déploiement de modèles prédictifs robustes.</p></div>
       </div>
       <ul class="principles" data-reveal>
         <li><strong>Sobriété et pragmatisme.</strong> Nous privilégions des solutions pérennes et directement exploitables par vos équipes internes, loin des promesses technologiques superflues.</li>
@@ -1512,12 +1512,13 @@ function setupReveals() {
   });
   document.querySelectorAll('[data-reveal]').forEach((el) => {
     if (el.closest('#hero')) return;
-    gsap.set(el, { autoAlpha: 0, y: 24 });
+    // opacity, not autoAlpha: visibility:hidden would hide the text from screen readers and text extractors
+    gsap.set(el, { opacity: 0, y: 24 });
   });
   // batch so cards entering together cascade (60ms apart) instead of popping in as a block
   ScrollTrigger.batch([...document.querySelectorAll('[data-reveal]')].filter((el) => !el.closest('#hero')), {
     start: 'top 90%', once: true,
-    onEnter: (els) => gsap.to(els, { autoAlpha: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.06 }),
+    onEnter: (els) => gsap.to(els, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.06 }),
   });
   document.querySelectorAll('[data-count]').forEach((el) => {
     // the real value stays in the DOM until the count-up starts, so crawlers and link previews never see 0
@@ -1609,11 +1610,14 @@ function playIntro() {
     tl.fromTo(intro, { z: 6 }, { z: 0, duration: 3, ease: 'power3.out' }, 0);
   }
   tl.from(heroLines, { yPercent: 110, duration: 1.4, stagger: 0.09 }, 0.35)
-    .from(heroReveals, { autoAlpha: 0, y: 30, duration: 1.2, stagger: 0.12, ease: 'power3.out' }, 0.8);
+    .from(heroReveals, { opacity: 0, y: 30, duration: 1.2, stagger: 0.12, ease: 'power3.out' }, 0.8);
 }
 
 const start = performance.now();
-const minTime = reduceMotion ? 0 : 900;   // long enough for the logo draw, short enough not to feel like a wait
+let seenThisSession = false;
+try { seenThisSession = sessionStorage.getItem('seen') === '1'; sessionStorage.setItem('seen', '1'); } catch (e) {}
+// first view: just long enough for the logo draw; later views in the same session skip it
+const minTime = (reduceMotion || seenThisSession) ? 0 : 450;
 let shown = 0;
 const ready = (document.fonts ? document.fonts.ready : Promise.resolve());
 let fontsReady = false;
@@ -1621,11 +1625,11 @@ ready.then(() => { fontsReady = true; });
 const iv = setInterval(() => {
   const elapsed = performance.now() - start;
   const cap = fontsReady ? 100 : 90;
-  shown = Math.min(cap, Math.max(shown + 3, Math.round((elapsed / minTime) * 100)));
+  shown = Math.min(cap, Math.max(shown + 7, Math.round((elapsed / minTime) * 100)));
   counter.textContent = String(shown).padStart(3, '0');
   if (shown >= 100 && elapsed >= minTime) {
     clearInterval(iv);
-    setTimeout(playIntro, 150);
+    setTimeout(playIntro, minTime ? 100 : 0);
   }
 }, 30);
 </script>
