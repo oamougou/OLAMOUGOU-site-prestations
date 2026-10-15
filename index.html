@@ -57,13 +57,15 @@
   "founder": {
     "@type": "Person",
     "name": "AMOUGOU Olivier",
-    "jobTitle": "Directeur Technique, TECHNOVA CAMEROUN SARL",
+    "affiliation": { "@type": "Organization", "name": "KOLAKORA SARL" },
     "alumniOf": "École Nationale Supérieure Polytechnique de Yaoundé"
   },
-  "serviceType": ["Audit et contrôle de facturation", "Data engineering et reporting", "Intelligence artificielle appliquée", "Cybersécurité et conformité", "Assistance aux marchés publics", "Formation et transfert de compétences"]
+  "serviceType": ["Audit et contrôle de facturation", "Data engineering et reporting", "Intelligence artificielle appliquée", "Cybersécurité et conformité", "Assistance aux marchés publics", "Formation et transfert de compétences", "Inspection de façades par drone et IA"]
 }
 </script>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230d1b2a'/%3E%3Crect x='7' y='7' width='18' height='18' fill='none' stroke='%234fb3d0' stroke-width='2'/%3E%3Crect x='17' y='11' width='5' height='5' fill='%234fb3d0'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="./favicon-64.png">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -106,6 +108,8 @@
     --safe-b: env(safe-area-inset-bottom, 0px);
     --safe-l: env(safe-area-inset-left, 0px);
   }
+  :root { --k-trait: #f4efe6; --k-or: #E7B54A; --k-rouge: #B8432A; --k-vert: #3F8A66; }
+  :root[data-theme="light"] { --k-trait: #1E1A17; --k-or: #D19A2A; --k-rouge: #8C2F1B; --k-vert: #2F6B4F; }
   :root[data-theme="light"] {
     color-scheme: light;
     --bg: #f3f5f8;
@@ -192,8 +196,6 @@
   }
   .brand { display: flex; align-items: center; gap: 0.7rem; font-weight: 600; letter-spacing: -0.01em; }
   .brand svg { width: 28px; height: 28px; flex: none; }
-  .brand svg [stroke], #preloader svg [stroke] { stroke: var(--accent); }
-  .brand svg [fill="#4fb3d0"], #preloader svg [fill="#4fb3d0"] { fill: var(--accent); }
   .header-actions { display: flex; align-items: center; gap: 0.6rem; }
   .theme-toggle {
     display: inline-grid; place-items: center; flex: none;
@@ -317,6 +319,10 @@
   .conviction { margin-top: 1.4rem; padding-left: 1.2rem; border-left: 2px solid var(--accent); }
 
   /* ── services ───────────────────────────────────────────── */
+  .grid-3 .service.wide { grid-column: 1 / -1; }
+  .badge { font: 400 0.68rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); padding: 0.3rem 0.5rem; }
+  .footer-brand { display: inline-flex; align-items: center; gap: 0.8rem; }
+  .footer-brand .k-marque { height: 20px; width: auto; }
   .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 3rem; }
   .service { display: flex; flex-direction: column; gap: 0.9rem; min-height: 100%; transition: border-color 0.25s ease, transform 0.3s var(--ease-out); }
   @media (hover: hover) and (pointer: fine) {
@@ -442,8 +448,9 @@
   }
   #preloader.done { opacity: 0; visibility: hidden; }
   #preloader svg { width: 56px; height: 56px; }
-  #preloader svg rect.frame { stroke-dasharray: 72; stroke-dashoffset: 72; animation: draw 0.45s cubic-bezier(.6,0,.2,1) forwards; }
-  #preloader svg rect.dot { opacity: 0; animation: fadein 0.2s 0.3s forwards; }
+  #preloader svg .ring { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 0.5s cubic-bezier(.6,0,.2,1) forwards; }
+  #preloader svg .core { opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(0.85); animation: fadein 0.3s 0.3s forwards, settle 0.3s 0.3s var(--ease-out) forwards; }
+  @keyframes settle { to { transform: scale(1); } }
   @keyframes draw { to { stroke-dashoffset: 0; } }
   @keyframes fadein { to { opacity: 1; } }
   .preloader-counter { font: 400 0.8rem/1 var(--mono); letter-spacing: 0.2em; color: var(--faint); }
@@ -506,10 +513,7 @@
 <body>
 
 <div id="preloader" aria-hidden="true">
-  <svg viewBox="0 0 32 32" fill="none">
-    <rect class="frame" x="7" y="7" width="18" height="18" stroke="#4fb3d0" stroke-width="1.5"/>
-    <rect class="dot" x="17" y="11" width="5" height="5" fill="#4fb3d0"/>
-  </svg>
+  <svg class="k-symbole" viewBox="0 0 220 220" aria-hidden="true"><g transform="translate(10.00,10.00) scale(1.0000)"><circle class="ring" pathLength="1" cx="100" cy="100" r="86" fill="none" style="stroke:var(--k-trait)" stroke-width="6.0"/><g class="core"><line x1="100" y1="40" x2="100" y2="164" style="stroke:var(--k-or)" stroke-width="12.0" stroke-linecap="round"/><circle cx="100" cy="34" r="9" style="fill:var(--k-or)"/><line x1="88" y1="88" x2="52" y2="52" style="stroke:var(--k-rouge)" stroke-width="12.0" stroke-linecap="round"/><line x1="88" y1="112" x2="52" y2="148" style="stroke:var(--k-rouge)" stroke-width="12.0" stroke-linecap="round"/><line x1="112" y1="88" x2="148" y2="52" style="stroke:var(--k-vert)" stroke-width="12.0" stroke-linecap="round"/><line x1="112" y1="112" x2="148" y2="148" style="stroke:var(--k-vert)" stroke-width="12.0" stroke-linecap="round"/><path d="M97 80 C84 81 76 90 76 100 C76 111 84 119 97 120 Z" style="fill:var(--k-rouge)"/><path d="M103 80 C116 81 124 90 124 100 C124 111 116 119 103 120 Z" style="fill:var(--k-vert)"/></g></g></svg>
   <div class="preloader-counter">000</div>
 </div>
 
@@ -521,7 +525,7 @@
 
 <header class="site-header">
   <a class="brand" href="#hero" data-scroll>
-    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="7" y="7" width="18" height="18" stroke="#4fb3d0" stroke-width="2"/><rect x="17" y="11" width="5" height="5" fill="#4fb3d0"/></svg>
+    <svg class="k-symbole" viewBox="0 0 220 220" aria-hidden="true"><g transform="translate(10.00,10.00) scale(1.0000)"><circle cx="100" cy="100" r="86" fill="none" style="stroke:var(--k-trait)" stroke-width="6.0"/><line x1="100" y1="40" x2="100" y2="164" style="stroke:var(--k-or)" stroke-width="12.0" stroke-linecap="round"/><circle cx="100" cy="34" r="9" style="fill:var(--k-or)"/><line x1="88" y1="88" x2="52" y2="52" style="stroke:var(--k-rouge)" stroke-width="12.0" stroke-linecap="round"/><line x1="88" y1="112" x2="52" y2="148" style="stroke:var(--k-rouge)" stroke-width="12.0" stroke-linecap="round"/><line x1="112" y1="88" x2="148" y2="52" style="stroke:var(--k-vert)" stroke-width="12.0" stroke-linecap="round"/><line x1="112" y1="112" x2="148" y2="148" style="stroke:var(--k-vert)" stroke-width="12.0" stroke-linecap="round"/><path d="M97 80 C84 81 76 90 76 100 C76 111 84 119 97 120 Z" style="fill:var(--k-rouge)"/><path d="M103 80 C116 81 124 90 124 100 C124 111 116 119 103 120 Z" style="fill:var(--k-vert)"/></g></svg>
     <span>AMOUGOU Olivier<small>Données · IA · Contrôle</small></span>
   </a>
   <nav class="nav" aria-label="Navigation principale">
@@ -601,7 +605,7 @@
     <div class="wrap">
       <span class="kicker" data-reveal>02 — Offres de services</span>
       <h2 data-lines>
-        <span class="line"><span>Six lignes de prestation,</span></span>
+        <span class="line"><span>Sept lignes de prestation,</span></span>
         <span class="line"><span><em>cadrées et livrables</em></span></span>
       </h2>
       <p class="lead" data-reveal>Chaque mission que nous conduisons est bornée par un périmètre écrit, un calendrier et une liste de livrables définis avant démarrage.</p>
@@ -641,6 +645,12 @@
           <h3>Formation &amp; transfert de compétences</h3>
           <p>Sessions courtes et opérationnelles, conçues sur les données réelles de l'organisation.</p>
           <ul><li>Excel avancé et automatisation</li><li>Python pour l'analyse de données</li><li>Lecture critique des indicateurs</li></ul>
+        </div>
+        <div class="card service wide" data-reveal>
+          <span class="num"><span>S.07</span><span class="badge">Nouveau</span></span>
+          <h3>Inspection de façades par drone &amp; IA</h3>
+          <p>Relevé de l'état des façades d'édifices sans nacelle ni échafaudage : imagerie haute définition et thermographique, analysée automatiquement pour repérer les désordres avant qu'ils ne s'aggravent.</p>
+          <ul><li>Détection de fissures, défauts d'étanchéité et corrosion</li><li>Rapport d'inspection structuré et historisé par bâtiment</li><li>Opérations conduites dans le cadre des autorisations de l'aviation civile</li></ul>
         </div>
       </div>
     </div>
@@ -751,7 +761,7 @@
       </h2>
       <div data-reveal>
         <p>Notre pratique s'est forgée au cœur d'environnements industriels, logistiques et institutionnels à forte intensité transactionnelle. Nous intervenons là où les processus conventionnels atteignent leurs limites d'échelle ou de fiabilité.</p>
-        <p>Nos travaux sont dirigés par <strong>AMOUGOU Olivier</strong>, titulaire d'un <strong>Master en Génie Informatique, option Big Data et Intelligence Artificielle</strong> de l'École Nationale Supérieure Polytechnique de Yaoundé — Université de Yaoundé I, fort de <strong>dix années d'expérience professionnelle</strong> en environnement opérationnel, co-fondateur et Directeur Technique de <strong>TECHNOVA CAMEROUN SARL</strong>, société de droit OHADA.</p>
+        <p>Nos travaux sont dirigés par <strong>AMOUGOU Olivier</strong>, titulaire d'un <strong>Master en Génie Informatique, option Big Data et Intelligence Artificielle</strong> de l'École Nationale Supérieure Polytechnique de Yaoundé — Université de Yaoundé I, fort de <strong>dix années d'expérience professionnelle</strong> en environnement opérationnel. Il intervient au sein de <strong>KOLAKORA SARL</strong>, société de droit OHADA.</p>
         <p>Plutôt que d'opposer la compréhension métier à la haute technicité, nous réunissons une double culture :</p>
       </div>
       <div class="cultures">
@@ -768,7 +778,7 @@
         <div><dt>Formation</dt><dd>Master en Génie Informatique — Big Data &amp; IA</dd></div>
         <div><dt>Établissement</dt><dd>ENSP Yaoundé — Université de Yaoundé I</dd></div>
         <div><dt>Expérience</dt><dd>10 ans</dd></div>
-        <div><dt>Société</dt><dd>TECHNOVA CAMEROUN SARL</dd></div>
+        <div><dt>Société</dt><dd>KOLAKORA SARL</dd></div>
         <div><dt>Base</dt><dd>Douala, Cameroun</dd></div>
         <div><dt>Interventions</dt><dd>Sur site &amp; à distance</dd></div>
       </dl>
@@ -811,6 +821,7 @@
               <option>Cybersécurité &amp; conformité</option>
               <option>Assistance aux marchés publics</option>
               <option>Formation &amp; transfert de compétences</option>
+              <option>Inspection de façades par drone</option>
               <option>Autre</option>
             </select>
           </label>
@@ -829,7 +840,7 @@
 </main>
 
 <footer>
-  <span>© <span id="year">2026</span> AMOUGOU Olivier — TECHNOVA CAMEROUN SARL</span>
+  <span class="footer-brand"><svg class="k-marque" viewBox="0 0 1111 260" role="img" aria-label="KOLAKORA"><g transform="translate(30.00,30.00) scale(1.0000)"><circle cx="100" cy="100" r="86" fill="none" style="stroke:var(--k-trait)" stroke-width="6.0"/><line x1="100" y1="40" x2="100" y2="164" style="stroke:var(--k-or)" stroke-width="12.0" stroke-linecap="round"/><circle cx="100" cy="34" r="9" style="fill:var(--k-or)"/><line x1="88" y1="88" x2="52" y2="52" style="stroke:var(--k-rouge)" stroke-width="12.0" stroke-linecap="round"/><line x1="88" y1="112" x2="52" y2="148" style="stroke:var(--k-rouge)" stroke-width="12.0" stroke-linecap="round"/><line x1="112" y1="88" x2="148" y2="52" style="stroke:var(--k-vert)" stroke-width="12.0" stroke-linecap="round"/><line x1="112" y1="112" x2="148" y2="148" style="stroke:var(--k-vert)" stroke-width="12.0" stroke-linecap="round"/><path d="M97 80 C84 81 76 90 76 100 C76 111 84 119 97 120 Z" style="fill:var(--k-rouge)"/><path d="M103 80 C116 81 124 90 124 100 C124 111 116 119 103 120 Z" style="fill:var(--k-vert)"/></g><path d="M327.888 130.95999999999998V125.58399999999999L383.28 161.2H347.568L300.528 128.56L343.92 99.75999999999999H378.096ZM276.72 99.75999999999999H300.72V161.2H276.72Z" style="fill:var(--k-trait)"/><g transform="translate(389.52,96.30) scale(0.6739)"><path d="M47 8 C22 9 8 30 8 50 C8 72 25 91 47 92 Z" style="fill:var(--k-rouge)"/><path d="M53 8 C78 9 92 30 92 50 C92 72 75 91 53 92 Z" style="fill:var(--k-vert)"/></g><path d="M490.51199999999994 99.75999999999999V142.95999999999998H546.48V161.2H466.512V99.75999999999999Z M572.784 151.88799999999998V137.488H638.448V151.88799999999998ZM551.28 161.2 592.4639999999999 99.75999999999999H619.1519999999999L660.7199999999999 161.2H634.3199999999999L598.704 106.19199999999998H613.0079999999999L577.68 161.2Z M719.568 130.95999999999998V125.58399999999999L774.9599999999999 161.2H739.2479999999999L692.208 128.56L735.5999999999999 99.75999999999999H769.776ZM668.4 99.75999999999999H692.4V161.2H668.4Z" style="fill:var(--k-trait)"/><g transform="translate(781.20,96.30) scale(0.6739)"><circle cx="50" cy="50" r="42" style="fill:var(--k-or)"/><line x1="38" y1="16" x2="38" y2="84" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/><line x1="50" y1="12" x2="50" y2="88" style="stroke:var(--k-trait)" stroke-width="5" stroke-linecap="round"/><line x1="62" y1="16" x2="62" y2="84" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/></g><path d="M858.192 161.2V99.75999999999999H932.4Q941.136 99.75999999999999 948.096 101.728Q955.056 103.696 959.136 108.30399999999999Q963.216 112.91199999999998 963.216 120.88Q963.216 126.16 961.296 129.61599999999999Q959.376 133.072 956.016 134.992Q952.656 136.91199999999998 948.336 137.77599999999998Q944.016 138.64 939.312 138.832L932.304 137.488Q943.728 137.584 949.92 138.44799999999998Q956.112 139.31199999999998 958.56 141.56799999999998Q961.008 143.82399999999998 961.008 148.048V161.2H937.008V150.928Q937.008 148.048 935.904 146.56Q934.8 145.072 931.104 144.49599999999998Q927.408 143.92 919.728 143.92H882.192V161.2ZM882.192 127.88799999999999H932.4Q935.28 127.88799999999999 937.248 126.928Q939.216 125.96799999999999 939.216 123.27999999999999Q939.216 120.78399999999999 937.248 119.87199999999999Q935.28 118.95999999999998 932.4 118.95999999999998H882.192Z M992.2080000000001 151.88799999999998V137.488H1057.872V151.88799999999998ZM970.7040000000001 161.2 1011.888 99.75999999999999H1038.576L1080.144 161.2H1053.7440000000001L1018.128 106.19199999999998H1032.432L997.104 161.2Z" style="fill:var(--k-trait)"/></svg><span>© <span id="year">2026</span> AMOUGOU Olivier — KOLAKORA SARL</span></span>
   <span>Douala, Cameroun · FR / EN</span>
 </footer>
 
